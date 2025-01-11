@@ -1,5 +1,7 @@
 ## GERENCIADOR DE ACADEMIAS 🎙️
-Este projeto pequeno é voltado para a prática de implementação de interface gráfica de usuários, utilizando a biblioteca TKinter do Python 
+Este projeto pequeno é voltado para a prática de implementação de interface gráfica de usuários, utilizando a biblioteca TKinter do Python.
+![image](https://github.com/user-attachments/assets/9c2ad803-1122-4296-8615-818fe9cdc2f4)
+
 
 ### 📚 Sobre o Projeto
 O objetivo deste projeto é proporcionar um exemplo prático de implementação da biblioteca TKinter e suas funcionalidades visando construir um software funcional e intuitivo
