@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS Treinos (
 # Código SQL para criar a tabela Campeonatos
 create_campeonatos_table = """
 CREATE TABLE IF NOT EXISTS Campeonatos (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT
     nome TEXT PRIMARY KEY,
     inscritos INTEGER,
     datas DATE,
@@ -41,29 +42,61 @@ CREATE TABLE IF NOT EXISTS Campeonatos (
 
 
 # Função para criar a tabela Medalhistas
-def criar_tabela_medalhistas():
+import sqlite3
+
+# Criação das tabelas
+def create_campeonatos_table():
     conn = sqlite3.connect('academia.db')
     cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Medalhistas (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL,
-            categoria TEXT NOT NULL,
-            campeonato_id INTEGER,
-            medalha TEXT,
-            FOREIGN KEY (campeonato_id) REFERENCES Campeonatos(id)
-        )
-    ''')
+
+    # Tabela Campeonatos
+    create_campeonatos_table = '''
+    CREATE TABLE IF NOT EXISTS Campeonatos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL,
+        inscritos INTEGER NOT NULL,
+        datas TEXT NOT NULL,
+        medalhistas TEXT
+    )
+    '''
+    cursor.execute(create_campeonatos_table)
+
+    # Tabela Medalhistas
+    create_medalhistas_table = '''
+    CREATE TABLE IF NOT EXISTS Medalhistas (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL,
+        categoria TEXT NOT NULL,
+        campeonato_id INTEGER,
+        medalha TEXT,
+        FOREIGN KEY (campeonato_id) REFERENCES Campeonatos(id)
+    )
+    '''
+    cursor.execute(create_medalhistas_table)
+
+    # Outras tabelas (exemplo para Alunos)
+    create_alunos_table = '''
+    CREATE TABLE IF NOT EXISTS Alunos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL,
+        idade INTEGER NOT NULL
+    )
+    '''
+    cursor.execute(create_alunos_table)
+
     conn.commit()
     conn.close()
 
-# Executa a criação da tabela
-criar_tabela_medalhistas()
+# Executar criação
+create_campeonatos_table()
+
 
 # Executar os comandos para criar as tabelas
 cursor.execute(create_alunos_table)
 cursor.execute(create_treinos_table)
-cursor.execute(create_campeonatos_table)
+cursor.execute('''PRAGMA table_info(Campeonatos)''')
+print(cursor.fetchall())
+
 
 # Confirmar e fechar a conexão
 conn.commit()
