@@ -1,6 +1,10 @@
 ## GERENCIADOR DE ACADEMIAS 🎙️
 Este projeto pequeno é voltado para a prática de implementação de interface gráfica de usuários, utilizando a biblioteca TKinter do Python.
 ![image](https://github.com/user-attachments/assets/9c2ad803-1122-4296-8615-818fe9cdc2f4)
+![image](https://github.com/user-attachments/assets/ca0ffa8f-c973-404a-a472-5ed966fa31aa)
+![image](https://github.com/user-attachments/assets/f628e3ce-8f7f-48ec-a5fe-afad884984cb)
+
+
 
 
 ### 📚 Sobre o Projeto
